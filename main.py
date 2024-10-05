@@ -1,9 +1,7 @@
 def main():
 	file_path = "books/frankenstein.txt"
 	book_content = get_book(file_path)
-	number_of_words = count_words(book_content)
-	print(f"Amount of words: {number_of_words}")
-	count_chars(book_content)
+	create_report(count_words(book_content), count_chars(book_content))
 
 def get_book(file):
 	with open(file) as f:
@@ -22,5 +20,16 @@ def count_chars(words):
                 dict[char] += 1
         else:
                 dict[char] = 1
-    print(dict)
+    return dict
+
+def create_report(count_words, count_chars):
+    print("--- Begin report of books/frankenstein.txt ---")       
+    print(f"{count_words} words found in the document")
+    sorted(count_chars)
+    
+    for char in count_chars:
+           print(f"The {char} character was found {count_chars[char]} times")
+
+    print("--- End report ---")
+
 main()
